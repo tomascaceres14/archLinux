@@ -1,4 +1,33 @@
-# archLinux
+# Mi camino "autodidacta" por archLinux
+
+## Introducción
+
+Hola, mi nombre es Tomas Alegria Caceres y toda mi vida fui usuario de Windows (como el 99%) de la poblacion. Hoy, 5 de abril de 2022 se cumplen aprox. 9 meses de que 
+inicie mi camino en el mundo de la informatica y programacion. En los ultimos meses, me pico el bichito de Linux y el codigo abierto. Tengo que admitir que siempre le 
+tuve miedo a este tipo de cosas, simplemente por puro desconocimiento. Asi que en parte esto es una forma de luchar contra ese miedo, salir de mi zona de confort y 
+ponerme en "modo esponja", con el objetivo de aprender todo lo que mas pueda ya que mi objetivo es algun dia poder trabajar como DevOp. Esto lo hago para que quede un 
+registro de todo lo que fui aprendiendo al adentrarme en el mundo de Linux y el codigo abierto.
+
+## Objetivo de este repositorio
+
+Ademas de lo ya aclarado en el parrafo anterior, quiero dos cosas principales mas: 
+
+- Construir el sistema a mi gusto y placer, con las decoraciones que me gusten y las herramientas que yo considere que sean necesarias para mi uso.
+
+- Que todo lo que vaya documentando en este archivo sea de facil comprension para cualquiera que haya pasado por lo mismo que yo. Esto ya que al comenzar con mi proceso de investigacion, me encuentro con que la mayoria de guias o tutoriales eran un tanto complejos, explcados de maneras que me resultaba complicado entender lo que estaba pasando, ademas de que para un problema que se nos presente, existen infinidad de soluciones, lo que a veces puede llevar a uno a marearse y terminar en una gran frustracion (lo digo por exp).
+
+## Herramientas para trabajar
+
+Primero que nada vamos a necesitar un software que nos permita crear maquinas virtuales. Esto con la intencion de lograr la instalacion y configuracion basica de nuestro sistema en un entorno seguro, donde en caso de cometer algun error, podamos simplemente borrarla y crear otra. En mi caso, voy a estar utilizando [Virtual Box](https://www.virtualbox.org/wiki/Downloads).
+
+La imagen iso de archLinux que vamos a instalar. Adjunto [pagina oficial de descargas](https://archlinux.org/download/).
+
+Por ultimo pero no menos importante, una buena [playlist](https://www.youtube.com/watch?v=5qap5aO4i9A&ab_channel=LofiGirl) para concentrarse y juntar paciencia porque esto lleva tiempo jeje.
+
+### Por si no saben usar VirtualBox:
+https://clomatica.com/como-arrancar-e-instalar-desde-iso-en-virtualbox/
+
+## Proceso de instalacion
 
 La configuracion de ArchLinux no es tan complicada, simplemente seguir los pasos con mucho cuidado.
 Ahora, estoy instalando Arch en VirtualBox, para asegurarme de conocer un poco el sistema antes de instalarlo en el SSD.
