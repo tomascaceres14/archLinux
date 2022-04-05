@@ -8,6 +8,12 @@ tuve miedo a este tipo de cosas, simplemente por puro desconocimiento. Asi que e
 ponerme en "modo esponja", con el objetivo de aprender todo lo que mas pueda ya que mi objetivo es algun dia poder trabajar como DevOp. Esto lo hago para que quede un 
 registro de todo lo que fui aprendiendo al adentrarme en el mundo de Linux y el codigo abierto.
 
+## Por que arch Linux?
+
+Decidi arrancar con Arch Linux ya que de todas las distribuciones de Linux, esta es una de las mas dificiles de instalar y dejar como un sistema operativo "comun y corriente". Esto se debe a que 1) no tenemos instalador, hay que instalarlo manualmente en el disco y 2) una vez instalado, solo tenemos los directorios necesarios para que el sistema funcione, pero no poseemos ni navegador web, ni interfaz, en algunos casos ni siquiera tenemos el comando sudo (vital en linux), entre otros, para que se den una idea. 
+
+Por lo general recomiendan empezar con distros mas faciles, que vengan con funciones preparadas, pero como ya tengo algunos conocimientos en Bash Scripting y manejo de consola, decidi ir por el metodo mas complicado jajaja.
+
 ## Objetivo de este repositorio
 
 Ademas de lo ya aclarado en el parrafo anterior, quiero dos cosas principales mas: 
