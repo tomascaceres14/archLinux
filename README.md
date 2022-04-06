@@ -38,21 +38,35 @@ https://clomatica.com/como-arrancar-e-instalar-desde-iso-en-virtualbox/
 La configuracion de ArchLinux no es tan complicada, simplemente seguir los pasos con mucho cuidado.
 Ahora, estoy instalando Arch en VirtualBox, para asegurarme de conocer un poco el sistema antes de instalarlo en el SSD.
 
-En VM, lo primero que hay que hacer es particionar el disco. Una particion para booteable para el root, otra para datos personales (/home) y otra (opcional) para el swap 
-o espacio de intercambio. Esta ultima se usa para almacenar archivos temporales y asi liberar espacio en ram.
+### Configuracion VM
 
-para esto, primero usamos fdisk -l para listar los discos diponibles. El disco loop0 esta por defecto (en VM y on bare-metal tmb), usaremos el Disk /dev/sda.
+Lo primero que debemos hacer es crear una maquina virtual, asignarle cantidad de RAM (recomiendo 2048 mb), almacenamiento, etc. (Basicamente, una vez asignada la ram darle siguiente siguiente siguiente hasta que termine). Una vez creado, le damos click derecho > Configuracion > Almacenamiento > Controlador IDE y elegimos la imagen iso de Arch.
 
-Para particionarlo, utilizamos fdisk *disco* /dev/sda. Ahora aparece un menu de ayuda. Si pulsamos la letra m nos mostrara las distintas opciones que tenemos. 
+**IMPORTANTE** en los settings ir a Network o Redes y cambiar la primer opcion a Adaptador Puente o Bridged adapter para que la Maquina Virtual reconozca el wifi de nuestra computadora.
 
-Para crear la tabla de particiones, pulsamos tecla "o". Esto no aplica en uefi.
+### Instalador
 
-Ahora, para crear la particion pulsamos "n". Nos va a preguntar si dicha particion es primaria o extendida. Al ser la del root, vamos con la letra "p" de primary.
+Elegimos la primera opcion "Arch linux Install medium x86".
+
+### Particionado de discos
+
+En VM, lo primero que hay que hacer es particionar el disco. Una particion para booteable para el root, otra para datos personales (/home) y otra para el swap o espacio de intercambio.
+Swap es un espacio en el almacenamiento reservado para, en terminos simples, "ayudar" a la RAM y almacenar ahi archivos temporales. [Mas sobre Swap](https://es.wikipedia.org/wiki/Espacio_de_intercambio).
+
+- Para esto, primero usamos el comando fdisk (permite ver y administrar los discos de nuestra maquina)  `fdisk -l` para listar los discos diponibles. Nos encontraremos con el disco loop0, el cual se encuentra por defecto, y con el disco /dev/sda que es con el que vamos a trabajar. [Mas sobre fdisk](https://openwebinars.net/blog/9-comandos-basicos-fdisk-para-gestionar-el-disco-duro/)
+
+Utilizamos `fdisk /dev/sda` para abrir el menu de particion. Con la letra m observamos las distintas opciones que tenemos. 
+
+- Para crear la tabla de particiones, pulsamos tecla "o". (Esto no aplica en uefi). [Mas sobre tablas de particiones](https://es.wikipedia.org/wiki/Tabla_de_particiones#:~:text=Una%20tabla%20de%20particiones%20es,de%20solo%20lectura%2C...)
+
+Ahora, para crear una nueva particion pulsamos `n`. Nos va a preguntar si dicha particion es primaria o extendida. Al ser la del root, osea donde se va a instalar la raiz del Sistema Operativo, vamos con `p` de primary.
 
 Nos va a preguntar que numero de particion (del 1 al 4). Al no haber particiones creadas, elegimos la 1.
 
+>A continuacion vamos a trabajar sobre los sectores del disco, que hace referencia a contenido mucho mas complejo sobre el hardware del propio HDD. Por ende, no voy a documentar de que se trata porque ni yo entendi, pero que sepan que siguiendo los pasos que les indico no van a tener problemas
+
 Primer sector lo dejamos en blanco. El ultimo sector es el tamaño de la particion de sistema. El disco de la vm tiene 8, asi q voy a asignar 4. 
-Esto se hace con +*cant.Gigas*G. En este caso, +4G.
+Esto se hace con +*cant.Gigas*G. En este caso, `+4G`.
 
 Ahora toca crear las otras 2 particiones. Estas particiones van a ser sub-particiones, quiere decir que se van a alojar en una particion.
 Volvemos a pulsar "n", vamos con "e" para crear particion extendida, numero de particion 2. Ahora, como esta particion va a ocupar el resto del disco, primer y ultimo 
