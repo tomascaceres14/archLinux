@@ -1,4 +1,4 @@
-# Mi camino "autodidacta" por archLinux
+# Mi camino hacia el Software Libre
 
 ## Introducción
 
