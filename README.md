@@ -64,25 +64,24 @@ Lo primero que hay que hacer es particionar el disco. Una particion la raiz del 
 
 - Para crear la tabla de particiones, pulsamos tecla "o". [Mas sobre tablas de particiones](https://es.wikipedia.org/wiki/Tabla_de_particiones#:~:text=Una%20tabla%20de%20particiones%20es,de%20solo%20lectura%2C...)
 
-- Ahora, para crear la primer particion pulsamos `n`. Nos va a preguntar si dicha particion es primaria o extendida. Al ser la del root, osea donde se va a instalar la raiz del Sistema Operativo, vamos con `p` de primary.
-
-Nos va a preguntar que numero de particion (del 1 al 4). Al no haber particiones creadas, elegimos la 1.
+- Ahora, para crear la primer particion pulsamos `n`. Nos va a preguntar si dicha particion es primaria o extendida. Al ser la del root, osea donde se va a instalar la raiz del Sistema Operativo, vamos con `p` de primary. Nos va a preguntar que numero de particion (del 1 al 4). Al no haber particiones creadas, elegimos la 1.
 
 >A continuacion vamos a trabajar sobre los sectores del disco, que hace referencia a contenido mucho mas complejo sobre el hardware del propio HDD. Por ende, no voy a documentar de que se trata porque ni yo entendi, pero que sepan que siguiendo los pasos que les indico no van a tener problemas
 
-Primer sector lo dejamos en blanco. El ultimo sector es el tamaño de la particion de sistema. El disco de la vm tiene 8, asi q voy a asignar 4. 
-Esto se hace con +*cant.Gigas*G. En este caso, `+4G`.
+- Primer sector lo dejamos en blanco. El ultimo sector es el tamaño de la particion de sistema. El disco de la vm tiene 8, asi q voy a asignar 4. Esto se hace con +*cant.Gigas*G. En este caso, `+4G`.
 
-Ahora toca crear las otras 2 particiones. Estas particiones van a ser sub-particiones, quiere decir que se van a alojar en una particion.
-Volvemos a pulsar "n", vamos con "e" para crear particion extendida, numero de particion 2. Ahora, como esta particion va a ocupar el resto del disco, primer y ultimo 
+- Ahora toca crear la particion extendida que alojara luego las otras dos subparticiones restantes (/home y swap). Volvemos a pulsar "n", vamos con "e" para crear particion extendida, numero de particion 2. Ahora, como esta particion va a ocupar el resto del disco, primer y ultimo 
 sector lo dejamos en blanco.
 
-Una vez finalizado esto y de vuelta al menu de Command(m for help): , recordemos que con "p" podemos listar los discos y sus particiones.
+>Recordemos que con "p" podemos listar los discos y sus particiones.
 
-Volvemos a utilizar "n", solo que esta vez no nos preguntara si primaria o extendida ya que no hay mas espacio en disco, por lo que logicamente empezara a crear particiones 
-dentro de la particion extendida.
+- Volvemos a utilizar "n", solo que esta vez no nos preguntara si primaria o extendida ya que no hay mas espacio en disco, por lo que logicamente empezara a crear particiones dentro de la particion extendida.
+- Toca repetir el mismo proceso para las dos restantes, con la diferencia de que a la primera que creemos le asignamos 3GB y a la segunda 1 (Sumando asi, el total de 4GB que tiene la particion extendida contenedora).
 
-Ahora un poco mas de lo mismo. Primer sector libre, asignamos los gb que queremos, y luego la segunda particion.
+Si hicimos todo bien, listando todos los discos deberiamos poder ver esto:
+
+![image](https://user-images.githubusercontent.com/92989104/162602909-b1ea2efc-2554-479a-b159-5cec2f102613.png)
+
 
 Ahora si listamos con "p", vemos que tenemos 4 particiones. La root, de tipo Linux, la Extendida que es el grupo de particiones, otra Linux que es la de los datos personales,
 y una linux mas que seria la swap. A esta ultima, tenemos que cambiarle el tipo de Linux a Swap.
