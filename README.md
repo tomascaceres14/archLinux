@@ -114,7 +114,7 @@ Luego hacemos lo mismo con la particion 5 (datos), dentro de mnt, en la carpeta 
 Descarga e Instalacion del Sistema y Kernel:
 Hasta ahora creamos y montamos las particiones. Lo que debemos a hacer continuacion es llenarlas, crear nuestro linux. En este sentido es bastante simple, ya que podemos 
 hacerlo con un simple comando.
-pacstrap *ruta particion 1* (/mnt) *paquetes necesarios* base linux linux-firmware nano grub networkmanager dhcpcd netctl wpasupplicant dialog
+pacstrap *ruta particion 1* (/mnt) *paquetes necesarios* base linux linux-firmware nano grub networkmanager dhcpcd netctl wpa_supplicant dialog
 
 base: al ser un SO desde cero, necesitaremos la base, por eso ponemos paquete base.
 linux: aclaramos el kernel que instalaremos.
