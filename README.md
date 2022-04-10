@@ -68,40 +68,35 @@ Lo primero que hay que hacer es particionar el disco. Una particion la raiz del 
 
 >A continuacion vamos a trabajar sobre los sectores del disco, que hace referencia a contenido mucho mas complejo sobre el hardware del propio HDD. Por ende, no voy a documentar de que se trata porque ni yo entendi, pero que sepan que siguiendo los pasos que les indico no van a tener problemas
 
-- Primer sector lo dejamos en blanco. El ultimo sector es el tamaño de la particion de sistema. El disco de la vm tiene 8, asi q voy a asignar 4. Esto se hace con +*cant.Gigas*G. En este caso, `+4G`.
+- Primer sector lo dejamos en blanco. El ultimo sector es el tamaño de la particion de sistema. El disco de la vm tiene 8GB, asi q voy a asignar 4. Esto se hace con +*cant.Gigas*G. En este caso, `+4G`.
 
-- Ahora toca crear la particion extendida que alojara luego las otras dos subparticiones restantes (/home y swap). Volvemos a pulsar "n", vamos con "e" para crear particion extendida, numero de particion 2. Ahora, como esta particion va a ocupar el resto del disco, primer y ultimo 
-sector lo dejamos en blanco.
+- Ahora toca crear la particion extendida que alojara luego las otras dos subparticiones restantes (/home y swap). Volvemos a pulsar `n`, vamos con `e` para crear particion extendida, numero de particion 2. Ahora, como esta particion va a ocupar el resto del disco, primer y ultimo sector lo dejamos en blanco.
 
 >Recordemos que con "p" podemos listar los discos y sus particiones.
 
-- Volvemos a utilizar "n", solo que esta vez no nos preguntara si primaria o extendida ya que no hay mas espacio en disco, por lo que logicamente empezara a crear particiones dentro de la particion extendida.
-- Toca repetir el mismo proceso para las dos restantes, con la diferencia de que a la primera que creemos le asignamos 3GB y a la segunda 1 (Sumando asi, el total de 4GB que tiene la particion extendida contenedora).
+- Toca repetir el mismo proceso para las dos restantes, con la diferencia de que a la primera que creemos le asignamos 3GB y a la segunda 1GB (sumando asi, el total de 4GB que tiene la particion extendida contenedora). Esta vez no nos preguntara si primaria o extendida ya que no hay mas espacio en disco, por lo que logicamente empezara a crear particiones dentro de la particion extendida.
 
 Si hicimos todo bien, listando todos los discos deberiamos poder ver esto:
 
 ![image](https://user-images.githubusercontent.com/92989104/162602909-b1ea2efc-2554-479a-b159-5cec2f102613.png)
 
 
-Ahora si listamos con "p", vemos que tenemos 4 particiones. La root, de tipo Linux, la Extendida que es el grupo de particiones, otra Linux que es la de los datos personales,
-y una linux mas que seria la swap. A esta ultima, tenemos que cambiarle el tipo de Linux a Swap.
+Ahora si listamos con `p`, vemos que tenemos 4 particiones. La root, de tipo Linux, la Extendida que es el grupo de particiones, otra Linux que es la de los datos personales, y una linux mas que seria la swap. A esta ultima, tenemos que cambiarle el tipo de Linux a Swap.
 
-Para hacer esto, pulsamos la "t". Nos preguntara el numero de particion, si nos guiamos por la descripcion de la ruta de cada una, veremos que la ultima creada es la dev6,
-por lo tanto pulsamos 6. Ahora tenemos que decirle que queremos que sea Swap. Para ver todos los tipos que tenemos, "L". Swap es codigo 82, asi que insertamos 82.
-Si volvemos a mostrar, veremos que dice linux swap / solaris.
+- Para hacer esto, pulsamos `t`. Nos preguntara el numero de particion, si nos guiamos por la descripcion de la ruta de cada una veremos que la ultima creada es la dev6, por lo tanto ingresamos 6. Ahora tenemos que decirle que queremos que sea Swap. Para ver todos los tipos que tenemos, "L". Swap tiene el codigo 82, asi que insertamos 82. Si volvemos a mostrar, veremos que dice linux swap / solaris.
 
-Nuestro siguiente trabajo, es decirle que la primera particion va a ser booteable. Para ello, insertamos "a" y le decimos que la particion booteable sera la 1.
-Para corroborar que se realizo con exito, veremos que al listar particiones, habra un asterisco en la columna de boot.
+Nuestro siguiente trabajo, es decirle que la primera particion va a ser booteable. 
 
-Ahora paso MUY IMPORTANTE. Corroborar que todo este configurado correctamente. Para confirmar todos estos cambios, tocamos la "w". No hay vuelta atras.
+- Insertamos "a" y le decimos que la particion booteable sera la 1. Para corroborar que se realizo con exito, veremos que al listar particiones, habra un asterisco en la columna de boot.
 
-Listo! Particiones creadas. En VM no pasa nada, pero cuando haya que mandar mano sobre un disco real, precaucion en este paso pq se borra todo archivo existente.
+_**MUY IMPORTANTE**:_ Corroborar que todo este configurado correctamente antes de aceptar los cambios ya que no hay vuelta atras. Para confirmar todos estos cambios, tocamos la `w`
 
-La particion de swap no funciona ahora mismo. Para que funcione hay que escribir mkswap /dev/sda6 o la ruta de donde se haya creado.
-Una vez hecho esto, para encender el swap, swapon.
+Listo!! Particiones creadas. En VM no pasa nada, pero cuando haya que mandar mano sobre un disco real, precaucion en este paso pq se borra todo archivo existente.
 
+La particion de swap no funciona ahora mismo. Para que funcione hay que escribir mkswap /dev/sda6 o la ruta de donde se haya creado. Una vez hecho esto, para encender el swap, swapon.
 
-Formateo de particiones:
+### Formateo de particiones
+
 Ahora debemos formatear ambos discos utilizando mkfs.ext4 /dev/sda1 y luego lo mismo pero /sda5, haciendo referencia a la particion con datos personales.
 El disco ya esta listo, solo falta montar las particiones para poder utilizarlas.
 
