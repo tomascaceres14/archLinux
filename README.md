@@ -50,16 +50,21 @@ Elegimos la primera opcion "Arch linux Install medium x86".
 
 ### Particionado de discos
 
-En VM, lo primero que hay que hacer es particionar el disco. Una particion para booteable para el root, otra para datos personales (/home) y otra para el swap o espacio de intercambio.
-Swap es un espacio en el almacenamiento reservado para, en terminos simples, "ayudar" a la RAM y almacenar ahi archivos temporales. [Mas sobre Swap](https://es.wikipedia.org/wiki/Espacio_de_intercambio).
+Lo primero que hay que hacer es particionar el disco. Una particion la raiz del sistema(root), otra para datos personales (/home) y otra para el swap o espacio de intercambio. Estas dos ultimas son subparticiones, que las vamos a alojar dentro de una particion extendida.
 
-- Para esto, primero usamos el comando fdisk (permite ver y administrar los discos de nuestra maquina)  `fdisk -l` para listar los discos diponibles. Nos encontraremos con el disco loop0, el cual se encuentra por defecto, y con el disco /dev/sda que es con el que vamos a trabajar. [Mas sobre fdisk](https://openwebinars.net/blog/9-comandos-basicos-fdisk-para-gestionar-el-disco-duro/)
+>Swap es un espacio en el almacenamiento reservado para, en terminos simples, "ayudar" a la RAM a liberar carga y almacenar ahi archivos temporales. [Mas sobre Swap](https://es.wikipedia.org/wiki/Espacio_de_intercambio).
 
-Utilizamos `fdisk /dev/sda` para abrir el menu de particion. Con la letra m observamos las distintas opciones que tenemos. 
 
-- Para crear la tabla de particiones, pulsamos tecla "o". (Esto no aplica en uefi). [Mas sobre tablas de particiones](https://es.wikipedia.org/wiki/Tabla_de_particiones#:~:text=Una%20tabla%20de%20particiones%20es,de%20solo%20lectura%2C...)
+**Luego de terminar con todo el proceso, nos deberia quedar tal que asi:**
+![image](https://user-images.githubusercontent.com/92989104/162602672-9c489999-3bcf-4feb-9c24-d60b23369f69.png)
 
-Ahora, para crear una nueva particion pulsamos `n`. Nos va a preguntar si dicha particion es primaria o extendida. Al ser la del root, osea donde se va a instalar la raiz del Sistema Operativo, vamos con `p` de primary.
+- Usamos el comando fdisk (permite ver y administrar los discos de nuestra maquina)  `fdisk -l` para listar los discos diponibles. Nos encontraremos con el disco loop0, el cual se encuentra por defecto, y con el disco /dev/sda que es con el que vamos a trabajar. Ahora ejecutamos `fdisk /dev/sda` para abrir el menu de particion. Con la letra `m` observamos las distintas opciones que tenemos. 
+
+>[Mas sobre fdisk](https://openwebinars.net/blog/9-comandos-basicos-fdisk-para-gestionar-el-disco-duro/)
+
+- Para crear la tabla de particiones, pulsamos tecla "o". [Mas sobre tablas de particiones](https://es.wikipedia.org/wiki/Tabla_de_particiones#:~:text=Una%20tabla%20de%20particiones%20es,de%20solo%20lectura%2C...)
+
+- Ahora, para crear la primer particion pulsamos `n`. Nos va a preguntar si dicha particion es primaria o extendida. Al ser la del root, osea donde se va a instalar la raiz del Sistema Operativo, vamos con `p` de primary.
 
 Nos va a preguntar que numero de particion (del 1 al 4). Al no haber particiones creadas, elegimos la 1.
 
