@@ -143,16 +143,18 @@ Bueno, luego de toodo esto, aun seguimos en el instalador, asi que vamos a entra
 
 ### Configuracion de GRUB:
 
-A pesar de ya tener asignado el fstab, tenemos que configurar GRUB para que el sistema pueda bootear, sino no nos dejara entrar (digo por experiencia, esto estaba casi al
-final del tutorial, tuve que apagar la VM y cuando volvi no me dejaba entrar, deberia haber sido la primer config pero bueno xd).
+A pesar de ya tener asignado el fstab, tenemos que configurar GRUB para que el sistema pueda bootear, sino no nos dejara entrar (lo digo por experiencia). Grub es un cargador de arranque multiple, lo que nos abre un menu para elegir el sistema que queremos iniciar.
 
-ejecutar grub-install /dev/sda
+>[Mas sobre GRUB](https://es.wikipedia.org/wiki/GNU_GRUB)
+
+- ejecutar `grub-install /dev/sda`
 
 Grub instalado, ahora vamos a configurarlo:
-grub-mkconfig -o(argumento para guardarlo en su archivo de config) /boot/grub/grub.cfg
+- `grub-mkconfig -o /boot/grub/grub.cfg`
 
-Ahora solo falta regenerar el disco de imagen de arranque. Linux utiliza una imagen de arranque, la cual debemos actualizar para que funcione  correctamente.
-ejecutar mkinitcpio -P
+Ahora solo falta regenerar el disco de imagen de arranque. Linux utiliza una imagen de arranque, la cual debemos actualizar para que funcione correctamente. Ejecutar `mkinitcpio -P`
+
+
 
 ### Configuraciones basicas:
 
