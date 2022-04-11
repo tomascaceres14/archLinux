@@ -129,14 +129,16 @@ El siguiente comando descarga todos los elementos necesarios para que el sistema
 - netctl: gestionar conexiones wifi
 - wpa_supplicant: por si red wifi usa wpa como contraseña
 
-Luego de este extenso comando, damos Enter para que empiece la descarga.
+Luego de este extenso comando, damos Enter para que empiece la descarga (consejo: prepararse un cafe porque puede tomar un rato).
 
-Generar fstab:
-Finalizadas todas las descargas, veremos que el sistema ya esta instalado, pero este sistema no puede arrancar. Para ello, crearemos un script para automatizarlo. El mismo
-se llama genfstab. Si escribimos genfstab /mnt veremos la configuracion que contiene el script. Ahora, debemos reescribir esa configuracion en un fichero llamado fstab. Para
-ello, ejecutamos el comando genfstab /mnt >> /mnt/etc/fstab. Para corroborar que se haya guardado la configuracion, hacemos un cat a fstab.
+### Generar fstab:
 
-Acceso CHROOT al sistema recien instalado:
+Finalizadas todas las descargas, veremos que el sistema ya esta instalado, pero este no puede arrancar. Para ello, utilizamos un script para automatizar su arranque. El mismo se llama _genfstab_. Si escribimos `genfstab /mnt` veremos la configuracion que contiene el script. Ahora, debemos reescribir esa configuracion en un fichero llamado fstab. 
+
+- Ejecutamos el comando `genfstab /mnt >> /mnt/etc/fstab`. Para corroborar que se haya guardado la configuracion, hacemos `cat /mnt/etc/fstab`.
+
+### Acceso CHROOT al sistema recien instalado:
+
 Bueno, luego de toodo esto, aun seguimos en el instalador, asi que vamos a entrar en ese sistema recien instalado. Para ello, comando arch-chroot /mnt
 
 Configuraciones basicas:
