@@ -210,9 +210,7 @@ Antes que nada, probar hacer mandar una señal a cualquier sitio (ej: google.com
 
 ![Screenshot 2022-04-10 225518_LI](https://user-images.githubusercontent.com/92989104/162652424-00bb6ed9-78a6-4b69-bc49-06704eae66e9.jpg)
 
-
-
-- ip enp0s3 up
+Fijense que en verde señalo donde tenemos que mirar para encontrar nuestra placa de red, y en rojo me informa que la misma esta funcionando (UP). Esto porque ya la encendi. Si en lugar de "UP" nos dice "DOWN", ejecutar `ip enp0s3 up`
 
 ### Programas a instalar:
 
@@ -220,22 +218,3 @@ Primero y principal, los drivers de los graficos que tengamos en nuestra computa
 Drivers de placa de video:
 para AMD: xf86-video-amdgpu
 para NVIDIA: xf86-video-nouveau
-
-
-Programas para gestor de ventanas:
-sudo pacman -S sddm (Servicio grafico)
-sudo pacman -S qtile  (Gestor de ventanas) 
-sudo pacman -S alacritty  (es una consola mas rapida)
-sudo pacman -S neofetch   (un paquete que nos muestra la distro de linux)
-sudo pacman -S rofi   (un menu rapido para acceder y abrir aplicaciones instaladas)
-
-Comandos utiles:
-win+enter   = abre una terminal
-win+w = cierra una terminal
-win+shift+q  = cierra sesion
-win+j  = navegas de una ventana a otra
-ctrl+1 vas al primer escritorio 
-win+m = vas al menu para abrir aplicaciones instaladas
-
-Una vez instalados todos estos programas para gestionar interfaz y ventanas, debemos activar el servicio grafico. Para eso systemctl enable sddm.service y luego lo mismo pero
-cambiando enable por start
