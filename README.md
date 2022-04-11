@@ -212,9 +212,14 @@ Antes que nada, probar hacer mandar una señal a cualquier sitio (ej: google.com
 
 Fijense que en verde señalo donde tenemos que mirar para encontrar nuestra placa de red, y en rojo me informa que la misma esta funcionando (UP). Esto porque ya la encendi. Si en lugar de "UP" nos dice "DOWN", ejecutar `ip enp0s3 up`, reemplazando "enp0s3" por el tipo de placa que nos aparezca.
 
-### Programas a instalar:
+## Instalacion de programas y software:
 
-Primero y principal, los drivers de los graficos que tengamos en nuestra computadora.
-Drivers de placa de video:
-para AMD: xf86-video-amdgpu
-para NVIDIA: xf86-video-nouveau
+En linux, la instalacion de programas o aplicaciones es mucho mas sencillo y facil que en Windows. En Windows, cuando queremos instalar un programa, debemos entrar en internet, buscar una pagina web confiable que contenga un link de descarga del instalador. Luego, es abrir el instalador, verificar que no se nos quiera instalar nada extra y darle a "siguiente" unas 5/6 veces.
+
+Por otra parte en linux simplemente debemos usar el administrador de paquetes que tengamos a mano. Por lo general se usa `apt` en distros como Ubuntu, Debian, etc. En nuestro caso, utilizamos `pacman`. Para descargar e instalar un programa, a traves de consola ingresamos `pacman -S nombreprograma`. Con ese simple comando ya estamos descargando e instalando el software, sin necesidad de perder mas tiempo (aunque a veces el nombre del programa debemos buscarlo en internet, pero es un proceso mucho mas facil que en Windows).
+
+### Aplicaciones basicas:
+
+- Primero y principal, los drivers de la placa grafica o graficos que tengamos en nuestra computadora.
+  - para AMD: xf86-video-amdgpu
+  - para NVIDIA: xf86-video-nouveau
