@@ -33,6 +33,8 @@ Por ultimo pero no menos importante, una buena [playlist](https://www.youtube.co
 ### Por si no saben usar VirtualBox:
 https://clomatica.com/como-arrancar-e-instalar-desde-iso-en-virtualbox/
 
+**IMPORTANTE: SI VAMOS A INSTALAR EL SISTEMA, REALIZAR TODO EL PROCESO SIN APAGAR LA MAQUINA HASTA QUE INSTALEMOS EL GRUB.** De otra forma, si apagamos la VM tendremos que hacer todo desde 0
+
 ## Proceso de instalacion
 
 La configuracion de ArchLinux no es tan complicada, simplemente seguir los pasos con mucho cuidado.
@@ -152,9 +154,9 @@ A pesar de ya tener asignado el fstab, tenemos que configurar GRUB para que el s
 Grub instalado, ahora vamos a configurarlo:
 - `grub-mkconfig -o /boot/grub/grub.cfg`
 
-Ahora solo falta regenerar el disco de imagen de arranque. Linux utiliza una imagen de arranque, la cual debemos actualizar para que funcione correctamente. Ejecutar `mkinitcpio -P`
+Ahora solo falta regenerar el disco de imagen de arranque. Linux utiliza una imagen de arranque, la cual debemos actualizar para que funcione correctamente.
 
-
+- Ejecutar `mkinitcpio -P`
 
 ### Configuraciones basicas:
 
@@ -165,11 +167,29 @@ Ahora solo falta regenerar el disco de imagen de arranque. Linux utiliza una ima
 
 ### Creacion de usuarios y contraseñas:
 
-Establecer contraseña para root: passwd
-Crear usuario: useradd -m(crea carpetas del usuario) tomi(nombre, solo letras minusculas)
-Crear contraseña usuario: passwd tomi
+- Establecer contraseña para root: `passwd`
 
-FIN!!! Arch Linux instalado.
+- Crear usuario: useradd -m(crea carpetas del usuario) _nombreusuario_(nombre, solo letras minusculas)
+- Crear contraseña usuario: passwd _nombreusuario_
+
+## Instalacion de Sudo
+
+En linux, el comando que mas vamos a utilizar es el de `sudo`. El mismo nos permite elevar los derechos de usuario para ejecutar comandos que tendriamos que ejecutar como root. Cuando le asignamos contraseña al root, por defecto no se instala.
+
+- Con el usuario root, ejecutar `pacman -S sudo`
+
+Una vez finalizado, debemos editar un archivo donde se guarda la configuracion del comando. En el, debemos decirle que el usuario que creamos previamente va a tener derecho para utilizar sudo.
+
+- Como usuario root, utilizamos el comando `nano /etc/sudoers`. Recordemos que previamente instalamos "nano", un editor de texto de consola.
+
+- Desplazarse hasta el fondo del archivo. Deberiamos poder ver algo como esto:
+![image](https://user-images.githubusercontent.com/92989104/162651139-7ba73eaf-b961-4bfe-9302-97cddc98ea91.png)
+
+
+
+
+
+## FIN!!! Arch Linux instalado.
 
 Ahora, ejecutamos exit para salir del SO, despues en el instalador ejecutamos reboot now para reiniciar
 
