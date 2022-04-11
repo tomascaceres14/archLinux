@@ -91,22 +91,28 @@ Nuestro siguiente trabajo, es decirle que la primera particion va a ser booteabl
 
 _**MUY IMPORTANTE**:_ Corroborar que todo este configurado correctamente antes de aceptar los cambios ya que no hay vuelta atras. Para confirmar todos estos cambios, tocamos la `w`
 
-Listo!! Particiones creadas. En VM no pasa nada, pero cuando haya que mandar mano sobre un disco real, precaucion en este paso pq se borra todo archivo existente.
+Listo! Particiones creadas!
 
 La particion de swap no funciona ahora mismo. Para que funcione hay que escribir mkswap /dev/sda6 o la ruta de donde se haya creado. Una vez hecho esto, para encender el swap, swapon.
 
-### Formateo de particiones
+### Formateo de particiones:
 
-Ahora debemos formatear ambos discos utilizando mkfs.ext4 /dev/sda1 y luego lo mismo pero /sda5, haciendo referencia a la particion con datos personales.
-El disco ya esta listo, solo falta montar las particiones para poder utilizarlas.
+Ahora debemos formatear ambos discos utilizando` mkfs.ext4 /dev/sda1` y luego lo mismo pero cambiamos la parte de `/sda1` por `/sda5`, haciendo referencia a la particion con datos personales. El disco ya esta listo, solo falta montar las particiones para poder utilizarlas.
 
-Montar particiones:
-Para esto, utilizaremos comando mount. De nuevo, recordemos que con fdisk -l listamos particiones. La primer particion a montar sera la de sistema. Lo logico seria instalarla 
-en el root '/', pero esta siendo utilizada en el instalador de arch, asi que vamos a instalarla temporalmente en '/mnt'. , asi que escribimos 'mount /dev/sda1 /mnt'.
+### Montar particiones:
 
-Luego hacemos lo mismo con la particion 5 (datos), dentro de mnt, en la carpeta /home. Como la carpeta home no existe, primero la creamos utilizando mkdir /mnt/home.
+Para esto, utilizaremos comando `mount`. De nuevo, recordemos que con `fdisk -l` listamos particiones. La primer particion a montar sera la de sistema. Lo logico seria instalarla en el root '/', pero esta siendo utilizada por el instalador de Arch, asi que vamos a instalarla temporalmente en '/mnt'.
 
-Descarga e Instalacion del Sistema y Kernel:
+- escribimos 'mount /dev/sda1 /mnt'.
+
+Luego hacemos lo mismo con la particion 5 (datos), dentro de mnt en una carpeta que llamaremos /home. Como la carpeta home no existe, primero debemos crearla.
+
+- `mkdir /mnt/home` para crear dicha carpeta. 
+
+- Ahora si, ejecutamos `mount /dev/sda5 /mnt/home` para finalizar con el montado de particiones. 
+
+### Descarga e Instalacion del Sistema y Kernel:
+
 Hasta ahora creamos y montamos las particiones. Lo que debemos a hacer continuacion es llenarlas, crear nuestro linux. En este sentido es bastante simple, ya que podemos 
 hacerlo con un simple comando.
 pacstrap *ruta particion 1* (/mnt) *paquetes necesarios* base linux linux-firmware nano grub networkmanager dhcpcd netctl wpa_supplicant dialog
