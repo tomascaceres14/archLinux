@@ -119,15 +119,15 @@ El siguiente comando descarga todos los elementos necesarios para que el sistema
 
 `pacstrap /mnt base linux linux-firmware nano grub networkmanager dhcpcd netctl wpa_supplicant dialog`
 
-base: al ser un SO desde cero, necesitaremos la base, por eso ponemos paquete base.
-linux: aclaramos el kernel que instalaremos.
-linux-firmware: instala controladores
-nano: editor de texto
-grub: cargador de arranque
-networkmanager: administrador de redes para conectarse a internet
-dhcpcd: cliente DNS
-netctl: gestionar conexiones wifi
-wpa_supplicant: por si red wifi usa wpa como contraseña
+- base: al ser un SO desde cero, esto nos instala la base del sistema.
+- linux: aclaramos el kernel que instalaremos.
+- linux-firmware: instala controladores
+- nano: editor de texto
+- grub: cargador de arranque
+- networkmanager: administrador de redes para conectarse a internet
+- dhcpcd: cliente DNS
+- netctl: gestionar conexiones wifi
+- wpa_supplicant: por si red wifi usa wpa como contraseña
 
 Luego de este extenso comando, damos Enter para que empiece la descarga.
 
