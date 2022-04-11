@@ -133,7 +133,7 @@ Luego de este extenso comando, damos Enter para que empiece la descarga (consejo
 
 ### Generar fstab:
 
-Finalizadas todas las descargas, veremos que el sistema ya esta instalado, pero este no puede arrancar. Para ello, utilizamos un script para automatizar su arranque. El mismo se llama _genfstab_. Si escribimos `genfstab /mnt` veremos la configuracion que contiene el script. Ahora, debemos reescribir esa configuracion en un fichero llamado fstab. 
+Finalizadas todas las descargas, veremos que el sistema ya esta instalado, pero este no puede arrancar. Para ello, utilizamos un script para automatizar su arranque. El mismo se llama _**genfstab**_. Si escribimos `genfstab /mnt` veremos la configuracion que contiene el script. Ahora, debemos reescribir esa configuracion en un fichero llamado fstab. 
 
 - Ejecutamos el comando `genfstab /mnt >> /mnt/etc/fstab`. Para corroborar que se haya guardado la configuracion, hacemos `cat /mnt/etc/fstab`.
 
