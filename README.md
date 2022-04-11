@@ -200,18 +200,23 @@ Ahora, ejecutamos exit para salir del SO, despues en el instalador ejecutamos re
 
 ## Instalacion de red:
 
+### Verificar conexion:
+
 El paquete Network manager esta instalado pero no esta activado. Para iniciarlo, ejecutamos `sudo systemctl start NetworkManager.service`. Esto dara de alta el servicio de red. Para que se ejecute automaticamente cada vez que encendamos la pc, ejecutar lo mismo cambiando `start` por `enable`.
 
 ### Conectarse a internet:
 
 Antes que nada, probar hacer mandar una señal a cualquier sitio (ej: google.com) con `ping google.com`. Si recibimos una respuesta, felicidades, ya estas conectado a internet. Si no, `ip link` para ver dispositivos de red. Prestar atencion a la segunda tarjeta que aparezca, esa es la que nos interesa. En mi caso, esta es enp0s3.
 
-- ip enp0s3 up (En el caso de la VM, ya estaba conectado a internet)
+![Screenshot 2022-04-10 225518_LI](https://user-images.githubusercontent.com/92989104/162652424-00bb6ed9-78a6-4b69-bc49-06704eae66e9.jpg)
 
-*PARA INSTALACION ON BARE METAL*
-para conectar al wifi:
-nmcli dev wifi connect *nombre red* password *contraseña de red*
 
+
+- ip enp0s3 up
+
+### Programas a instalar:
+
+Primero y principal, los drivers de los graficos que tengamos en nuestra computadora.
 Drivers de placa de video:
 para AMD: xf86-video-amdgpu
 para NVIDIA: xf86-video-nouveau
