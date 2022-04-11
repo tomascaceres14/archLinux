@@ -158,6 +158,8 @@ Ahora solo falta regenerar el disco de imagen de arranque. Linux utiliza una ima
 
 - Ejecutar `mkinitcpio -P`
 
+Ahora si somos libres de poder apagar la maquina, total el sistema base ya esta creado. Cuando se vuelva a abrir el instalador, no tocar la primera opcion y elegir la que dice "Boot existing OS"
+
 ### Configuraciones basicas:
 
 - Configurar hora local: `ln -sf /usr/chare/zoneinfo/America/Argentina/Buenos_Aires /etc/localtime` En mi caso puse horario de Buenos Aires ya que es el mas cercano a  mi ubicacion, pero cada uno busque su pais y el que le venga mas comodo(_tip_: al escribir rutas, luego de la barra '/', si presionan dos veces el tab les lista todo lo que contiene dicha carpeta).
@@ -193,7 +195,7 @@ Como ven donde apunta la flecha blanca, dice "User privilege specification". Qui
 
 ## FIN!!! Arch Linux instalado.
 
-Ahora, ejecutamos exit para salir del SO, despues en el instalador ejecutamos reboot now para reiniciar
+Ahora, ejecutamos exit para salir del SO, despues en el instalador ejecutamos reboot now para reiniciar.
 
 Instalacion de red:
 network manager esta instalado pero no esta activado. Para iniciarlo, nos pasamos al root
