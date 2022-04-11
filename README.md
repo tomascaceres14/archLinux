@@ -139,20 +139,10 @@ Finalizadas todas las descargas, veremos que el sistema ya esta instalado, pero 
 
 ### Acceso CHROOT al sistema recien instalado:
 
-Bueno, luego de toodo esto, aun seguimos en el instalador, asi que vamos a entrar en ese sistema recien instalado. Para ello, comando arch-chroot /mnt
+Bueno, luego de toodo esto, aun seguimos en el instalador, asi que vamos a entrar en ese sistema recien instalado. Para ello, comando `arch-chroot /mnt`
 
-Configuraciones basicas:
-Configurar hora local: ln -sf /usr/chare/zoneinfo/America/Argentina/Buenos_Aires /etc/localtime
-Configurar reloj: hwclock --systohc
-Configurar hostname: echo "TomiPC" > /etc/hostname
-Configurar localhost: echo "127.0.0.1 localhost" > /etc/host
+### Configuracion de GRUB:
 
-Creacion de usuarios y contraseñas:
-Establecer contraseña para root: passwd
-Crear usuario: useradd -m(crea carpetas del usuario) tomi(nombre, solo letras minusculas)
-Crear contraseña usuario: passwd tomi
-
-Configuracion de GRUB:
 A pesar de ya tener asignado el fstab, tenemos que configurar GRUB para que el sistema pueda bootear, sino no nos dejara entrar (digo por experiencia, esto estaba casi al
 final del tutorial, tuve que apagar la VM y cuando volvi no me dejaba entrar, deberia haber sido la primer config pero bueno xd).
 
@@ -163,6 +153,19 @@ grub-mkconfig -o(argumento para guardarlo en su archivo de config) /boot/grub/gr
 
 Ahora solo falta regenerar el disco de imagen de arranque. Linux utiliza una imagen de arranque, la cual debemos actualizar para que funcione  correctamente.
 ejecutar mkinitcpio -P
+
+### Configuraciones basicas:
+
+- Configurar hora local: `ln -sf /usr/chare/zoneinfo/America/Argentina/Buenos_Aires /etc/localtime` En mi caso puse horario de Buenos Aires ya que es el mas cercano a  mi ubicacion, pero cada uno busque su pais y el que le venga mas comodo(_tip_: al escribir rutas, luego de la barra '/', si presionan dos veces el tab les lista todo lo que contiene dicha carpeta).
+- Configurar reloj: `hwclock --systohc`
+- Configurar hostname: `echo "TomiPC" > /etc/hostname` Claramente no pongan tomiPC sino el nombre que le quieren asignar a su maquina.
+- Configurar localhost: `echo "127.0.0.1 localhost" > /etc/host`
+
+### Creacion de usuarios y contraseñas:
+
+Establecer contraseña para root: passwd
+Crear usuario: useradd -m(crea carpetas del usuario) tomi(nombre, solo letras minusculas)
+Crear contraseña usuario: passwd tomi
 
 FIN!!! Arch Linux instalado.
 
