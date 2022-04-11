@@ -214,9 +214,9 @@ Fijense que en verde señalo donde tenemos que mirar para encontrar nuestra plac
 
 ## Instalacion de programas y software:
 
-En linux, la instalacion de programas o aplicaciones es mucho mas sencillo y facil que en Windows. En Windows, cuando queremos instalar un programa, debemos entrar en internet, buscar una pagina web confiable que contenga un link de descarga del instalador. Luego, es abrir el instalador, verificar que no se nos quiera instalar nada extra y darle a "siguiente" unas 5/6 veces.
+En linux, la instalacion de programas o aplicaciones es un tanto distina a la que usualmente usamos en Windows. En Windows, cuando queremos instalar un programa debemos entrar en internet, buscar una pagina web confiable que contenga un link de descarga del instalador, descargarlo, verificar que no se nos quiera instalar nada extra y darle a "siguiente" unas 5/6 veces.
 
-Por otra parte en linux simplemente debemos usar el administrador de paquetes que tengamos a mano. Por lo general se usa `apt` en distros como Ubuntu, Debian, etc. En nuestro caso, utilizamos `pacman`. Para descargar e instalar un programa, a traves de consola ingresamos `pacman -S nombreprograma`. Con ese simple comando ya estamos descargando e instalando el software, sin necesidad de perder mas tiempo (aunque a veces el nombre del programa debemos buscarlo en internet, pero es un proceso mucho mas facil que en Windows).
+Por otra parte en linux debemos usar el administrador de paquetes que tengamos a mano. Por lo general se usa `apt` en distros como Ubuntu, Debian, etc. En nuestro caso, utilizamos `pacman`. Para descargar e instalar un programa, a traves de consola ingresamos `pacman -S nombreprograma`. Con ese simple comando ya estamos descargando e instalando el software, sin necesidad de perder mas tiempo (aunque a veces el nombre del programa debemos buscarlo en internet, pero es un proceso mucho mas facil que en Windows).
 
 ### Aplicaciones basicas:
 
