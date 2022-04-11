@@ -172,7 +172,7 @@ Ahora solo falta regenerar el disco de imagen de arranque. Linux utiliza una ima
 - Crear usuario: useradd -m(crea carpetas del usuario) _nombreusuario_(nombre, solo letras minusculas)
 - Crear contraseña usuario: passwd _nombreusuario_
 
-## Instalacion de Sudo
+### Instalacion de Sudo
 
 En linux, el comando que mas vamos a utilizar es el de `sudo`. El mismo nos permite elevar los derechos de usuario para ejecutar comandos que tendriamos que ejecutar como root. Cuando le asignamos contraseña al root, por defecto no se instala.
 
@@ -185,9 +185,11 @@ Una vez finalizado, debemos editar un archivo donde se guarda la configuracion d
 - Desplazarse hasta el fondo del archivo. Deberiamos poder ver algo como esto:
 ![image](https://user-images.githubusercontent.com/92989104/162651139-7ba73eaf-b961-4bfe-9302-97cddc98ea91.png)
 
+Como ven donde apunta la flecha blanca, dice "User privilege specification". Quiere decir que ahi debemos especificar que usuarios pueden utilizar el comando. En la flecha verde se señala la sentencia que le da derechos a mi usuario.
 
+- Donde apunta la flecha verde, o debajo de la sentencia del root, ejecutar ` username ALL=(ALL:ALL) ALL` logicamente reemplazando _username_ por el nombre que ustedes le hayan dado a su usuario.
 
-
+- `Ctrl + X` para guardar,  `Y` para confirmar los cambios y  `Enter` para guardarlo bajo el mismo nombre.
 
 ## FIN!!! Arch Linux instalado.
 
