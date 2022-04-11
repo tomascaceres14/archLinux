@@ -210,7 +210,7 @@ Antes que nada, probar hacer mandar una señal a cualquier sitio (ej: google.com
 
 ![Screenshot 2022-04-10 225518_LI](https://user-images.githubusercontent.com/92989104/162652424-00bb6ed9-78a6-4b69-bc49-06704eae66e9.jpg)
 
-Fijense que en verde señalo donde tenemos que mirar para encontrar nuestra placa de red, y en rojo me informa que la misma esta funcionando (UP). Esto porque ya la encendi. Si en lugar de "UP" nos dice "DOWN", ejecutar `ip enp0s3 up`
+Fijense que en verde señalo donde tenemos que mirar para encontrar nuestra placa de red, y en rojo me informa que la misma esta funcionando (UP). Esto porque ya la encendi. Si en lugar de "UP" nos dice "DOWN", ejecutar `ip enp0s3 up`, reemplazando "enp0s3" por el tipo de placa que nos aparezca.
 
 ### Programas a instalar:
 
