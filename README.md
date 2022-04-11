@@ -97,7 +97,7 @@ La particion de swap no funciona ahora mismo. Para que funcione hay que escribir
 
 ### Formateo de particiones:
 
-Ahora debemos formatear ambos discos utilizando` mkfs.ext4 /dev/sda1` y luego lo mismo pero cambiamos la parte de `/sda1` por `/sda5`, haciendo referencia a la particion con datos personales. El disco ya esta listo, solo falta montar las particiones para poder utilizarlas.
+Ahora debemos formatear ambos discos utilizando`mkfs.ext4 /dev/sda1` y luego lo mismo pero cambiamos la parte de `/sda1` por `/sda5`, haciendo referencia a la particion con datos personales. El disco ya esta listo, solo falta montar las particiones para poder utilizarlas.
 
 ### Montar particiones:
 
@@ -113,9 +113,11 @@ Luego hacemos lo mismo con la particion 5 (datos), dentro de mnt en una carpeta 
 
 ### Descarga e Instalacion del Sistema y Kernel:
 
-Hasta ahora creamos y montamos las particiones. Lo que debemos a hacer continuacion es llenarlas, crear nuestro linux. En este sentido es bastante simple, ya que podemos 
-hacerlo con un simple comando.
-pacstrap *ruta particion 1* (/mnt) *paquetes necesarios* base linux linux-firmware nano grub networkmanager dhcpcd netctl wpa_supplicant dialog
+Hasta ahora creamos y montamos las particiones. Lo que debemos a hacer continuacion es llenarlas para "crear" nuestro linux. En este sentido es bastante simple, ya que podemos hacerlo con un simple comando.
+
+El siguiente comando descarga todos los elementos necesarios para que el sistema funcione correctamente. pacstrap es el gestor de paquetes (herramienta que nos permite descargar archivos), /mnt es la ruta de instalacion y luego indicamos separando con espacios todos los paquetes que queremos descargar e instalar.
+
+`pacstrap /mnt base linux linux-firmware nano grub networkmanager dhcpcd netctl wpa_supplicant dialog`
 
 base: al ser un SO desde cero, necesitaremos la base, por eso ponemos paquete base.
 linux: aclaramos el kernel que instalaremos.
