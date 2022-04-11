@@ -185,6 +185,7 @@ Una vez finalizado, debemos editar un archivo donde se guarda la configuracion d
 - Como usuario root, utilizamos el comando `nano /etc/sudoers`. Recordemos que previamente instalamos "nano", un editor de texto de consola.
 
 - Desplazarse hasta el fondo del archivo. Deberiamos poder ver algo como esto:
+
 ![image](https://user-images.githubusercontent.com/92989104/162651139-7ba73eaf-b961-4bfe-9302-97cddc98ea91.png)
 
 Como ven donde apunta la flecha blanca, dice "User privilege specification". Quiere decir que ahi debemos especificar que usuarios pueden utilizar el comando. En la flecha verde se señala la sentencia que le da derechos a mi usuario.
@@ -193,30 +194,23 @@ Como ven donde apunta la flecha blanca, dice "User privilege specification". Qui
 
 - `Ctrl + X` para guardar,  `Y` para confirmar los cambios y  `Enter` para guardarlo bajo el mismo nombre.
 
-## FIN!!! Arch Linux instalado.
+**FIN!!! Arch Linux instalado.**
 
 Ahora, ejecutamos exit para salir del SO, despues en el instalador ejecutamos reboot now para reiniciar.
 
-Instalacion de red:
-network manager esta instalado pero no esta activado. Para iniciarlo, nos pasamos al root
+## Instalacion de red:
 
-ejecutamos systemctl start NetworkManager.service Esto dara de alta el servicio de red.
-Para que se ejecute automaticamente cada vez que encendamos la pc, ejecutar lo mismo cambiando start por enable
+El paquete Network manager esta instalado pero no esta activado. Para iniciarlo, ejecutamos `sudo systemctl start NetworkManager.service`. Esto dara de alta el servicio de red. Para que se ejecute automaticamente cada vez que encendamos la pc, ejecutar lo mismo cambiando `start` por `enable`.
 
-Conectarse a internet:
-antes que nada, probar hacer un ping a cualquier sitio (ej: google.com). S=
-ip link para ver dispositivos de red.
-prestar atencion a la segunda tarjeta que aparezca, esa es la que nos interesa.
-ip *nombre tarjeta* enp0s3 up (En el caso de la VM, ya estaba conectado a internet)
+### Conectarse a internet:
+
+Antes que nada, probar hacer mandar una señal a cualquier sitio (ej: google.com) con `ping google.com`. Si recibimos una respuesta, felicidades, ya estas conectado a internet. Si no, `ip link` para ver dispositivos de red. Prestar atencion a la segunda tarjeta que aparezca, esa es la que nos interesa. En mi caso, esta es enp0s3.
+
+- ip enp0s3 up (En el caso de la VM, ya estaba conectado a internet)
 
 *PARA INSTALACION ON BARE METAL*
 para conectar al wifi:
 nmcli dev wifi connect *nombre red* password *contraseña de red*
-
-Programas a instalar:
-El primer problema con el que me encontre fue que no tenia sudo instalado por defecto. Esto se debe a que cuando le asignamos una contraseña al usuario root, este no nos instala
-sudo. En caso de que no tenga contraseña, si sera necesario. Descargarlo como usuario root (recordemos que se utiliza el admin de paquetes pacman)
-pacman -S sudo. Luego, editar el archivo /etc/sudoers y al fondo de el mismo agregar usuarionombre ALL=(ALL) ALL.
 
 Drivers de placa de video:
 para AMD: xf86-video-amdgpu
