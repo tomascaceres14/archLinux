@@ -198,6 +198,8 @@ Como ven donde apunta la flecha blanca, dice "User privilege specification". Qui
 
 Ahora, ejecutamos exit para salir del SO, despues en el instalador ejecutamos reboot now para reiniciar.
 
+Lo que recomiendo es una vez llegado a este paso, apagar la maquina, dirigirse a la configuracion, almacenamiento y quitarle la iso a la maquina virtual para que no nos vuelva a abrir el instalador cada vez que la encendamos
+
 ## Instalacion de red:
 
 ### Verificar conexion:
