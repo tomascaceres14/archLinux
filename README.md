@@ -48,7 +48,11 @@ Elegimos la primera opcion "Arch linux Install medium x86".
 
 ### Particionado de discos
 
-Lo primero que hay que hacer es particionar el disco en tres partes. La primera particion será para la raiz del sistema(root), la segunda para datos personales (/home) y la tercera para el swap o espacio de intercambio. Estas dos ultimas son subparticiones, y las vamos a alojar dentro de una particion extendida.
+Antes que nada, que es una particion? Una particion es una division o porcion del disco duro que se crea con el fin de instalar un sistema operativo o almacenar informacion. Estas mismas son diferentes secciones virtuales, ya que fisicamente no existe tal division. Los sistemas interpretan y manipulan las particiones como un disco independiente, a pesar de que dichas particiones se encuentren en un mismo disco fisico.
+
+>Les dejo un [video](https://www.youtube.com/watch?v=CSbUiK2pytE) que explica muy bien lo basico sobre particiones y sistemas de archivos. 
+
+Lo primero que hay que hacer es particionar el disco en tres partes. La primera particion será para la raiz del sistema(root), la segunda para datos personales (/home) y la tercera para el swap o espacio de intercambio. Estas dos ultimas son subparticiones, y las vamos a alojar dentro de una particion extendida. [Mas informacion util sobre particiones en Linux.](https://www.compuhoy.com/como-uso-la-particion-extendida-en-linux/)
 
 >Swap es un espacio en el almacenamiento reservado para, en términos simples, "ayudar" a la RAM a liberar carga y almacenar allí archivos temporales. [Mas sobre Swap](https://es.wikipedia.org/wiki/Espacio_de_intercambio).
 
@@ -156,19 +160,19 @@ Ahora solo falta regenerar el disco de imagen de arranque. Linux utiliza una ima
 
 Ahora si somos libres de poder apagar la maquina, total el sistema base ya esta creado. Cuando se vuelva a abrir el instalador, no tocar la primera opcion y elegir la que dice "Boot existing OS"
 
-### Configuraciones basicas:
-
-- Configurar hora local: `ln -sf /usr/chare/zoneinfo/America/Argentina/Buenos_Aires /etc/localtime` En mi caso puse horario de Buenos Aires ya que es el mas cercano a  mi ubicacion, pero cada uno busque su pais y el que le venga mas comodo(_tip_: al escribir rutas, luego de la barra '/', si presionan dos veces el tab les lista todo lo que contiene dicha carpeta).
-- Configurar reloj: `hwclock --systohc`
-- Configurar hostname: `echo "TomiPC" > /etc/hostname` Claramente no pongan tomiPC sino el nombre que le quieren asignar a su maquina.
-- Configurar localhost: `echo "127.0.0.1 localhost" > /etc/host`
-
 ### Creacion de usuarios y contraseñas:
 
 - Establecer contraseña para root: `passwd`
 
 - Crear usuario: useradd -m(crea carpetas del usuario) _nombreusuario_(nombre, solo letras minusculas)
 - Crear contraseña usuario: passwd _nombreusuario_
+
+### Configuraciones basicas:
+
+- Configurar hora local: `ln -sf /usr/share/zoneinfo/America/Argentina/Buenos_Aires /etc/localtime` En mi caso puse horario de Buenos Aires ya que es el mas cercano a  mi ubicacion, pero cada uno busque su pais y el que le venga mas comodo(_tip_: al escribir rutas, luego de la barra '/', si presionan dos veces el tab les lista todo lo que contiene dicha carpeta).
+- Configurar reloj: `hwclock --systohc`
+- Configurar hostname: `echo "nombremaquina" > /etc/hostname`
+- Configurar localhost: `echo "127.0.0.1 localhost" > /etc/host`
 
 ### Instalacion de Sudo
 
