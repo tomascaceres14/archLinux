@@ -225,3 +225,7 @@ Por otra parte en linux debemos usar el administrador de paquetes que tengamos a
 - Primero y principal, los drivers de la placa grafica o graficos que tengamos en nuestra computadora.
   - para AMD: xf86-video-amdgpu
   - para NVIDIA: xf86-video-nouveau
+
+- Tenemos que instalar un gestor de entorno grafico para poder tener escritorio y ventanas, yo voy a instalar xorg-server. Ademas, tambien vamos a instalar un gestor de sesiones, esto para iniciar sesion con ventana y no desde consola.
+  - `sudo pacman -S xorg-server lightdm lightdm-gtk-greeter`
+  - habilitamos lightdm con `systemctl enable lightdm.service`. Luego de la instalacion, reiniciamos el sistema con `sudo reboot now` y ya cuando inicie       tendremos disponible lightdm para iniciar sesion y qtile funcionando. 
