@@ -20,11 +20,11 @@ Ademas de lo ya aclarado en el parrafo anterior, quiero dos cosas principales ma
 
 ## Herramientas para trabajar
 
-Primero que nada vamos a necesitar un software que nos permita crear máquinas virtuales. Esto con la intención de lograr la instalación y configuración básica de nuestro sistema en un entorno seguro, donde en caso de cometer algun error, podamos simplemente borrarla y crear otra. En mi caso, voy a estar utilizando [Virtual Box](https://www.virtualbox.org/wiki/Downloads).
+Primero que nada vamos a necesitar un software que nos permita crear máquinas virtuales. Esto con la intención de lograr la instalación y configuración básica de nuestro sistema en un entorno seguro, donde en caso de cometer algún error, podamos simplemente borrarla y crear otra. En mi caso, voy a estar utilizando [Virtual Box](https://www.virtualbox.org/wiki/Downloads).
 
 La imágen iso de archLinux que vamos a instalar. Adjunto [pagina oficial de descargas](https://archlinux.org/download/).
 
-Por ultimo pero no menos importante, una buena [playlist](https://www.youtube.com/watch?v=5qap5aO4i9A&ab_channel=LofiGirl) para concentrarse y juntar paciencia porque esto lleva tiempo jeje.
+Por último pero no menos importante, una buena [playlist](https://www.youtube.com/watch?v=5qap5aO4i9A&ab_channel=LofiGirl) para concentrarse y juntar paciencia porque esto lleva tiempo jeje.
 
 ### Por si no saben usar VirtualBox:
 https://clomatica.com/como-arrancar-e-instalar-desde-iso-en-virtualbox/
@@ -40,24 +40,24 @@ Ahora, estoy instalando Arch en VirtualBox, para asegurarme de conocer un poco e
 
 Lo primero que debemos hacer es crear una máquina virtual, asignarle cantidad de RAM (recomiendo 2048 Mb), almacenamiento, etc. (Básicamente, una vez asignada la memoria RAM, dar click a "siguiente" hasta que termine). Una vez creado, le damos click derecho > Configuracion > Almacenamiento > Controlador IDE y elegimos la imágen iso de Arch.
 
-**IMPORTANTE** en los settings ir a Network o Redes y cambiar la primer opcion a Adaptador Puente o Bridged Adapter para que la Maquina Virtual reconozca el wifi de nuestra computadora.
+**IMPORTANTE** en los settings ir a Network o Redes y cambiar la primer opción a Adaptador Puente o Bridged Adapter para que la Maquina Virtual reconozca el wifi de nuestra computadora.
 
 ### Instalador
 
-Elegimos la primera opcion "Arch linux Install medium x86".
+Elegimos la primera opción "Arch linux Install medium x86".
 
 ### Particionado de discos
 
-Antes que nada, que es una particion? Una particion es una division o porcion del disco duro que se crea con el fin de instalar un sistema operativo o almacenar informacion. Estas mismas son diferentes secciones virtuales, ya que fisicamente no existe tal division. Los sistemas interpretan y manipulan las particiones como un disco independiente, a pesar de que dichas particiones se encuentren en un mismo disco fisico.
+Antes que nada, vamos a aclarar este concepto un poco. Una partición es una división o porción del disco duro que se crea con el fin de instalar un sistema operativo o almacenar información. Estas divisiones son diferentes secciones virtuales, de manera que físicamente tales particiones no existen. Los sistemas interpretan y manipulan las particiones como un disco independiente, a pesar de que dichas particiones se encuentren en un mismo disco fisico.
 
 >Les dejo un [video](https://www.youtube.com/watch?v=CSbUiK2pytE) que explica muy bien lo basico sobre particiones y sistemas de archivos. 
 
-Lo primero que hay que hacer es particionar el disco en tres partes. La primera particion será para la raiz del sistema(root), la segunda para datos personales (/home) y la tercera para el swap o espacio de intercambio. Estas dos ultimas son subparticiones, y las vamos a alojar dentro de una particion extendida. [Mas informacion util sobre particiones en Linux.](https://www.compuhoy.com/como-uso-la-particion-extendida-en-linux/)
+Lo primero que hay que hacer es particionar el disco en tres partes. La primera particion será para la raiz del sistema(root), la segunda para datos personales (/home) y la tercera para el swap o espacio de intercambio. Estas dos últimas son subparticiones, y las vamos a alojar dentro de una partición extendida. [Mas informacion util sobre particiones en Linux.](https://www.compuhoy.com/como-uso-la-particion-extendida-en-linux/)
 
 >Swap es un espacio en el almacenamiento reservado para, en términos simples, "ayudar" a la RAM a liberar carga y almacenar allí archivos temporales. [Mas sobre Swap](https://es.wikipedia.org/wiki/Espacio_de_intercambio).
 
 
-**Luego de terminar con todo el proceso, nos deberia quedar algo asi:**
+**Luego de terminar con todo el proceso, nos deberia quedar algo así:**
 ![image](https://user-images.githubusercontent.com/92989104/162602672-9c489999-3bcf-4feb-9c24-d60b23369f69.png)
 
 - Usamos el comando fdisk (permite ver y administrar los discos de nuestra maquina)  `fdisk -l` para listar los discos diponibles. Nos encontraremos con el disco loop0 (el cual se encuentra por defecto) y con el disco /dev/sda , que es con el que vamos a trabajar. Ahora, ejecutamos `fdisk /dev/sda` para abrir el menu de partición. Con la letra `m` observamos las distintas opciones que tenemos. 
@@ -72,20 +72,20 @@ Lo primero que hay que hacer es particionar el disco en tres partes. La primera 
 
 - El primer sector lo dejamos en blanco. El ultimo sector es el tamaño de la particion de sistema. El disco de la vm tiene 8GB, asi que voy a asignar 4. Esto se hace con +*cant.Gigas*G. En este caso, `+4G`.
 
-- Ahora, debemos crear la partición extendida que luego alojará las otras dos subparticiones restantes (/home y swap). Volvemos a pulsar `n` y presionamos `e` para crear la partición extendida, numero de particion 2. Ahora, como esta partición va a ocupar el resto del disco, el primer y último sector lo dejamos en blanco.
+- Ahora, debemos crear la partición extendida que luego alojará las otras dos subparticiones restantes (/home y swap). Volvemos a pulsar `n` y presionamos `e` para crear la partición extendida, numero de partición 2. Ahora, como esta va a ocupar el resto del disco, el primer y último sector lo dejamos en blanco.
 
 >Recordemos que con "p" podemos listar los discos y sus particiones.
 
-- Debemos repetir el mismo proceso para las dos restantes, con la diferencia de que a la primera que creemos le asignamos 3GB y a la segunda 1GB (sumando asi, el total de 4GB que tiene la particion extendida contenedora). Esta vez no nos preguntara si primaria o extendida ya que no hay mas espacio en disco, por lo que lógicamente, empezará a crear particiones dentro de la partición extendida.
+- Debemos repetir el mismo proceso para las dos restantes, con la diferencia de que a la primera que creemos le asignamos 3GB y a la segunda 1GB (sumando asi, el total de 4GB que tiene la partición extendida contenedora). Esta vez no nos preguntará si primaria o extendida ya que no hay mas espacio en el disco, por lo que lógicamente, empezará a crear particiones dentro de la partición extendida.
 
 Si hicimos todo bien, listando todos los discos deberiamos poder ver esto:
 
 ![image](https://user-images.githubusercontent.com/92989104/162602909-b1ea2efc-2554-479a-b159-5cec2f102613.png)
 
 
-Ahora si listamos con `p`, vemos que tenemos 4 particiones. La root (de tipo Linux), la Extendida (que es el grupo de particiones), otra Linux que es la de los datos personales, y una linux mas que seria la swap. A esta última, tenemos que cambiarle el tipo de Linux a Swap.
+Ahora, si listamos con `p`, vemos que tenemos 4 particiones. La root (de tipo Linux), la Extendida (que es el grupo de particiones), otra Linux que es la de los datos personales, y una linux mas que seria la swap. A esta última, tenemos que cambiarle el tipo de Linux a Swap.
 
-- Para hacer esto, pulsamos `t`. Nos preguntará el numero de partición, si nos guiamos por la descripción de la ruta de cada una, veremos que la última creada es la dev6, por lo tanto ingresamos 6. Ahora tenemos que decirle que queremos que sea Swap. Para ver todos los tipos que tenemos ingresar "L". Swap tiene el codigo 82, asi que insertamos 82. Si volvemos a mostrar, veremos que dice linux swap / solaris.
+- Para hacer esto, pulsamos `t`. Nos preguntará el numero de partición. Si nos guiamos por la descripción de la ruta de cada una, veremos que la última creada es la dev6, por lo tanto ingresamos 6. Ahora tenemos que decirle que queremos que sea Swap. Para ver todos los tipos que tenemos ingresar "L". Swap tiene el codigo 82, asi que insertamos 82. Si volvemos a mostrar, veremos que dice linux swap / solaris.
 
 Nuestro siguiente trabajo, es decirle que la primera partición va a ser booteable. 
 
@@ -105,9 +105,9 @@ Ahora debemos formatear ambos discos utilizando `mkfs.ext4 /dev/sda1`; luego ing
 
 Para esto, utilizaremos comando `mount`. De nuevo, recordemos que con `fdisk -l` podemos listar las particiones. La primer partición a montar será la de sistema. Lo mas lógico sería instalarla en el root '/', pero esta está siendo utilizada por el instalador de Arch, asi que vamos a instalarla temporalmente en '/mnt'.
 
-- escribimos 'mount /dev/sda1 /mnt'.
+- Escribimos 'mount /dev/sda1 /mnt'.
 
-Luego hacemos lo mismo con la particion 5 (datos), dentro de mnt en una carpeta que llamaremos /home. Como la carpeta home no existe, primero debemos crearla.
+Luego hacemos lo mismo con la partición 5 (datos), dentro de mnt en una carpeta que llamaremos /home. Como la carpeta home no existe, primero debemos crearla.
 
 - `mkdir /mnt/home` para crear dicha carpeta. 
 
@@ -115,12 +115,13 @@ Luego hacemos lo mismo con la particion 5 (datos), dentro de mnt en una carpeta 
 
 ### Descarga e Instalación del Sistema y Kernel:
 
-Hasta ahora creamos y montamos las particiones. Lo que debemos a hacer continuacion es llenarlas para "crear" nuestro linux. En este sentido es bastante simple, ya que podemos hacerlo con un simple comando.
+Hasta ahora creamos y montamos las particiones. Lo que debemos hacer a continuación es llenarlas para "crear" nuestro linux. En este sentido es bastante simple, ya que podemos hacerlo con un sencillo comando.
 
-El siguiente comando descarga todos los elementos necesarios para que el sistema funcione correctamente. pacstrap es el gestor de paquetes (herramienta que nos permite descargar archivos), /mnt es la ruta de instalacion y luego indicamos separando con espacios todos los paquetes que queremos descargar e instalar.
+El siguiente comando descarga todos los elementos necesarios para que el sistema funcione correctamente: 
 
 `pacstrap /mnt base linux linux-firmware nano grub networkmanager dhcpcd netctl wpa_supplicant dialog`
 
+pacstrap es el gestor de paquetes (herramienta que nos permite descargar archivos), /mnt es la ruta de instalación y luego indicamos separando con espacios todos los paquetes que queremos descargar e instalar:
 - base: al ser un SO desde cero, esto nos instala la base del sistema.
 - linux: aclaramos el kernel que instalaremos.
 - linux-firmware: instala controladores
@@ -131,64 +132,66 @@ El siguiente comando descarga todos los elementos necesarios para que el sistema
 - netctl: gestionar conexiones wifi
 - wpa_supplicant: por si red wifi usa wpa como contraseña
 
-Luego de este extenso comando, damos Enter para que empiece la descarga (consejo: prepararse un cafe porque puede tomar un rato).
+Luego de este extenso comando, damos Enter para que empiece la descarga (consejo: prepararse un café porque puede tomar un rato).
 
 ### Generar fstab:
 
-Finalizadas todas las descargas, veremos que el sistema ya esta instalado, pero este no puede arrancar. Para ello, utilizamos un script para automatizar su arranque. El mismo se llama _**genfstab**_. Si escribimos `genfstab /mnt` veremos la configuracion que contiene el script. Ahora, debemos reescribir esa configuracion en un fichero llamado fstab. 
+Finalizadas todas las descargas, veremos que el sistema ya esta instalado, pero este no puede arrancar. Para ello, utilizamos un script para automatizar su arranque. El mismo se llama _**genfstab**_. Si escribimos `genfstab /mnt` veremos la configuración que contiene el script. Ahora, debemos reescribir esa configuración en un fichero llamado fstab. 
 
-- Ejecutamos el comando `genfstab /mnt >> /mnt/etc/fstab`. Para corroborar que se haya guardado la configuracion, hacemos `cat /mnt/etc/fstab`.
+- Ejecutamos el comando `genfstab /mnt >> /mnt/etc/fstab`. Para corroborar que se haya guardado la configuración correctamente, ejecutamos `cat /mnt/etc/fstab`.
 
-### Acceso CHROOT al sistema recien instalado:
+### Acceso CHROOT al sistema recién instalado:
 
-Bueno, luego de toodo esto, aun seguimos en el instalador, asi que vamos a entrar en ese sistema recien instalado. Para ello, comando `arch-chroot /mnt`
+Luego de todo este proceso, aún nos encontramos en el instalador, asi que vamos a entrar en ese sistema recién instalado. Para ello, ingresamos el comando `arch-chroot /mnt`
 
 ### Configuracion de GRUB:
 
-A pesar de ya tener asignado el fstab, tenemos que configurar GRUB para que el sistema pueda bootear, sino no nos dejara entrar (lo digo por experiencia). Grub es un cargador de arranque multiple, lo que nos abre un menu para elegir el sistema que queremos iniciar.
+A pesar de ya tener asignado el fstab, tenemos que configurar GRUB para que el sistema pueda bootear, si no, este no nos dejará entrar (lo digo por experiencia). Grub es un cargador de arranque múltiple, lo que nos abre un menú para elegir el sistema que queremos iniciar.
 
 >[Mas sobre GRUB](https://es.wikipedia.org/wiki/GNU_GRUB)
 
-- ejecutar `grub-install /dev/sda`
+- Ejecutar `grub-install /dev/sda`
 
 Grub instalado, ahora vamos a configurarlo:
 - `grub-mkconfig -o /boot/grub/grub.cfg`
 
-Ahora solo falta regenerar el disco de imagen de arranque. Linux utiliza una imagen de arranque, la cual debemos actualizar para que funcione correctamente.
+En este punto, solo falta regenerar el disco de imágen de arranque. Linux utiliza una imágen de arranque, la cual debemos actualizar para que funcione correctamente.
 
 - Ejecutar `mkinitcpio -P`
 
-Ahora si somos libres de poder apagar la maquina, total el sistema base ya esta creado. Cuando se vuelva a abrir el instalador, no tocar la primera opcion y elegir la que dice "Boot existing OS"
+Ahora si somos libres de poder apagar la maquina, total el sistema base ya esta creado. Cuando se vuelva a abrir el instalador, no tocar la primera opción y elegir la que dice "Boot existing OS".
 
-### Creacion de usuarios y contraseñas:
+### Creación de usuarios y contraseñas:
 
 - Establecer contraseña para root: `passwd`
 
 - Crear usuario: useradd -m(crea carpetas del usuario) _nombreusuario_(nombre, solo letras minusculas)
 - Crear contraseña usuario: passwd _nombreusuario_
 
-### Configuraciones basicas:
+### Configuraciones básicas:
 
-- Configurar hora local: `ln -sf /usr/share/zoneinfo/America/Argentina/Buenos_Aires /etc/localtime` En mi caso puse horario de Buenos Aires ya que es el mas cercano a  mi ubicacion, pero cada uno busque su pais y el que le venga mas comodo(_tip_: al escribir rutas, luego de la barra '/', si presionan dos veces el tab les lista todo lo que contiene dicha carpeta).
+- Configurar hora local: `ln -sf /usr/share/zoneinfo/America/Argentina/Buenos_Aires /etc/localtime` En mi caso puse horario de Buenos Aires ya que es el mas cercano a  mi ubicación, sin embargo esto depende de la ubicación geográfica en donde te encuentres.(_tip_: al escribir rutas, luego de la barra '/', si presionan dos veces el tab les lista todo lo que contiene dicha carpeta).
 - Configurar reloj: `hwclock --systohc`
 - Configurar hostname: `echo "nombremaquina" > /etc/hostname`
 - Configurar localhost: `echo "127.0.0.1 localhost" > /etc/host`
 
-### Instalacion de Sudo
+### Instalación de Sudo
 
-En linux, el comando que mas vamos a utilizar es el de `sudo`. El mismo nos permite elevar los derechos de usuario para ejecutar comandos que tendriamos que ejecutar como root. Cuando le asignamos contraseña al root, por defecto no se instala.
+En Linux, el comando que mas vamos a utilizar es el `sudo`. El mismo nos permite elevar los derechos de usuario para ejecutar comandos que tendríamos que ejecutar como root. Cuando le asignamos contraseña al root, por defecto no se instala.
 
 - Con el usuario root, ejecutar `pacman -S sudo`
 
-Una vez finalizado, debemos editar un archivo donde se guarda la configuracion del comando. En el, debemos decirle que el usuario que creamos previamente va a tener derecho para utilizar sudo.
+Una vez finalizado, debemos editar un archivo donde se guarda la configuración del comando. En el, debemos indicarle que el usuario que previamente creamos, va a tener derecho para utilizar sudo.
 
-- Como usuario root, utilizamos el comando `nano /etc/sudoers`. Recordemos que previamente instalamos "nano", un editor de texto de consola.
+- Como usuario root, utilizamos el comando `nano /etc/sudoers`. 
+
+  Nota: Recordemos que previamente instalamos "nano", un editor de texto de consola.
 
 - Desplazarse hasta el fondo del archivo. Deberiamos poder ver algo como esto:
 
 ![image](https://user-images.githubusercontent.com/92989104/162651139-7ba73eaf-b961-4bfe-9302-97cddc98ea91.png)
 
-Como ven donde apunta la flecha blanca, dice "User privilege specification". Quiere decir que ahi debemos especificar que usuarios pueden utilizar el comando. En la flecha verde se señala la sentencia que le da derechos a mi usuario.
+Si observamos donde señala la flecha blanca, podemos notar que dice "User privilege specification"; es allí donde debemos especificar que usuarios pueden utilizar el comando. En la flecha verde se señala la sentencia que le da derechos a mi usuario.
 
 - Donde apunta la flecha verde, o debajo de la sentencia del root, ejecutar ` username ALL=(ALL:ALL) ALL` logicamente reemplazando _username_ por el nombre que ustedes le hayan dado a su usuario.
 
@@ -198,11 +201,11 @@ Como ven donde apunta la flecha blanca, dice "User privilege specification". Qui
 
 Ahora, ejecutamos exit para salir del SO, despues en el instalador ejecutamos reboot now para reiniciar.
 
-Lo que recomiendo es una vez llegado a este paso, apagar la maquina, dirigirse a la configuracion, almacenamiento y quitarle la iso a la maquina virtual para que no nos vuelva a abrir el instalador cada vez que la encendamos
+Recomiendo que una vez llegado a este paso, apagar la maquina, dirigirse a la configuración, almacenamiento y quitarle la iso a la maquina virtual para que no vuelva a abrir el instalador cada vez que la encendamos.
 
-## Instalacion de red:
+## Instalación de red:
 
-### Verificar conexion:
+### Verificar conexión:
 
 El paquete Network manager esta instalado pero no esta activado. Para iniciarlo, ejecutamos `sudo systemctl start NetworkManager.service`. Esto dara de alta el servicio de red. Para que se ejecute automaticamente cada vez que encendamos la pc, ejecutar lo mismo cambiando `start` por `enable`.
 
