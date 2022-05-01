@@ -2,21 +2,21 @@
 
 ## Introducción
 
-Hola, mi nombre es Tomas Alegria Caceres y toda mi vida fui usuario de Windows (como el 99%) de la población. Hoy, 5 de abril de 2022 se cumplen aproximadamente 9 meses de que inicié mi camino en el mundo de la informática y programación. En los últimos meses, me picó el bichito de Linux y el código abierto. Tengo que admitir que siempre le tuve miedo a este tipo de cosas, simplemente por puro desconocimiento. Asi que en parte, esto es una forma de luchar contra ese miedo, salir de mi zona de confort y ponerme en "modo esponja", con el objetivo de aprender todo lo que mas pueda ya que mi objetivo es algun dia poder trabajar como DevOp. Esto lo hago para que quede un registro de todo lo que fui aprendiendo al adentrarme en el mundo de Linux y el código abierto.
+Hola, mi nombre es Tomás Alegría Cáceres y toda mi vida fui usuario de Windows (como el 99% de la población). Hoy, 5 de abril de 2022 se cumplen aproximadamente 9 meses desde que inicié mi camino en el mundo de la informática y programación. En los últimos meses, me picó el bichito de Linux y el código abierto. Tengo que admitir que siempre le tuve miedo a este tipo de cosas, simplemente por puro desconocimiento. Asi que en parte, esto es una forma de luchar contra ese miedo, salir de mi zona de confort y ponerme en "modo esponja", con el objetivo de aprender todo lo que mas pueda ya que mi objetivo es algun dia poder trabajar como DevOp. Esto lo hago para que quede un registro de todo lo que fui aprendiendo al adentrarme en el mundo de Linux y el código abierto.
 
 ## Por qué arch Linux?
 
 Decidí arrancar con Arch Linux ya que de todas las distribuciones de Linux, esta es una de las mas difíciles de instalar y dejar como un sistema operativo "común y corriente". Esto se debe a que 1) no tenemos instalador (se debe instalar manualmente en el disco), 2) una vez instalado, solo tenemos los directorios necesarios para que el sistema funcione, pero no poseemos ni navegador web, ni interfaz, en algunos casos ni siquiera tenemos el comando sudo (vital en Linux), entre otros, para que se den una idea. 
 
-Por lo general recomiendan empezar con distros mas faciles, que vengan con funciones preparadas, pero como ya tengo algunos conocimientos en Bash Scripting y manejo de consola, decidí ir por el método mas complicado jajaja.
+Por lo general recomiendan empezar con distros mas fáciles, que vengan con funciones preparadas, pero como ya tengo algunos conocimientos en Bash Scripting y manejo de consola, decidí ir por el método mas complicado jajaja.
 
 ## Objetivo de este repositorio
 
-Ademas de lo ya aclarado en el parrafo anterior, quiero dos cosas principales mas: 
+Ademas de lo ya aclarado en el parrafo anterior, busco dos cosas principales mas: 
 
 - Construir el sistema a mi gusto y placer, con las decoraciones que me gusten y las herramientas que yo considere que sean necesarias para mi uso.
 
-- Que todo lo que vaya documentando en este archivo sea de fácil comprensión para cualquiera que haya pasado por lo mismo que yo. Esto ya que al comenzar con mi proceso de investigación, me encuentro con que la mayoria de guias o tutoriales eran un tanto complejos, explicados de maneras que me resultaba complicado entender lo que estaba pasando, ademas de que para un problema que se nos presente, existen infinidad de soluciones, lo que a veces puede llevar a uno a marearse y terminar en una gran frustración (lo digo por experiencia).
+- Que todo lo que vaya documentando en este archivo sea de fácil comprensión para cualquiera que haya pasado por lo mismo que yo. Esto ya que al comenzar con mi proceso de investigación, me encuentro con que la mayoria de guias o tutoriales eran un tanto complejos, explicados de maneras que me resultaba complicado entender lo que estaba pasando, además de que para un problema que se nos presente, existen infinidad de soluciones, lo que a veces puede llevar a uno a marearse y terminar en una gran frustración (lo digo por experiencia).
 
 ## Herramientas para trabajar
 
@@ -207,28 +207,31 @@ Recomiendo que una vez llegado a este paso, apagar la maquina, dirigirse a la co
 
 ### Verificar conexión:
 
-El paquete Network manager esta instalado pero no esta activado. Para iniciarlo, ejecutamos `sudo systemctl start NetworkManager.service`. Esto dara de alta el servicio de red. Para que se ejecute automaticamente cada vez que encendamos la pc, ejecutar lo mismo cambiando `start` por `enable`.
+El paquete Network manager esta instalado pero aun no está activado. Para iniciarlo, ejecutamos `sudo systemctl start NetworkManager.service`. Esto dará de alta el servicio de red. Para que se ejecute automaticamente cada vez que encendamos la pc, ejecutar el mismo comando, cambiando `start` por `enable`.
 
 ### Conectarse a internet:
 
-Antes que nada, probar hacer mandar una señal a cualquier sitio (ej: google.com) con `ping google.com`. Si recibimos una respuesta, felicidades, ya estas conectado a internet. Si no, `ip link` para ver dispositivos de red. Prestar atencion a la segunda tarjeta que aparezca, esa es la que nos interesa. En mi caso, esta es enp0s3.
+
+
+Antes que nada, realizar una prueba mandando una señal a cualquier sitio (ej: google.com) con `ping google.com`. Si recibimos una respuesta, Felicidades! Ya estás conectado a internet. En caso contrario, ejecutar `ip link` para ver dispositivos de red. Prestar atención a la segunda tarjeta que aparezca, esa es la que nos interesa. En mi caso, esta es enp0s3.
 
 ![Screenshot 2022-04-10 225518_LI](https://user-images.githubusercontent.com/92989104/162652424-00bb6ed9-78a6-4b69-bc49-06704eae66e9.jpg)
 
-Fijense que en verde señalo donde tenemos que mirar para encontrar nuestra placa de red, y en rojo me informa que la misma esta funcionando (UP). Esto porque ya la encendi. Si en lugar de "UP" nos dice "DOWN", ejecutar `ip enp0s3 up`, reemplazando "enp0s3" por el tipo de placa que nos aparezca.
+La marca verde señala donde tenemos que mirar para encontrar nuestra placa de red. La marca roja me informa que la misma esta funcionando (UP). Esto debido a que ya la encendí. Si en lugar de "UP" nos muestra "DOWN", ejecutar `ip enp0s3 up`, reemplazando "enp0s3" por el tipo de placa que nos aparezca.
 
-## Instalacion de programas y software:
+## Instalación de programas y software:
 
-En linux, la instalacion de programas o aplicaciones es un tanto distina a la que usualmente usamos en Windows. En Windows, cuando queremos instalar un programa debemos entrar en internet, buscar una pagina web confiable que contenga un link de descarga del instalador, descargarlo, verificar que no se nos quiera instalar nada extra y darle a "siguiente" unas 5/6 veces.
+En Linux, la instalación de programas y/o aplicaciones es un tanto distina a la que usualmente usamos en Windows. En Windows, cuando queremos instalar un programa debemos entrar en internet, buscar una pagina web confiable que contenga un link de descarga del instalador, descargarlo, verificar que no se nos quiera instalar nada extra y darle a "siguiente" entre unas 5 o 6 veces.
 
-Por otra parte en linux debemos usar el administrador de paquetes que tengamos a mano. Por lo general se usa `apt` en distros como Ubuntu, Debian, etc. En nuestro caso, utilizamos `pacman`. Para descargar e instalar un programa, a traves de consola ingresamos `pacman -S nombreprograma`. Con ese simple comando ya estamos descargando e instalando el software, sin necesidad de perder mas tiempo (aunque a veces el nombre del programa debemos buscarlo en internet, pero es un proceso mucho mas facil que en Windows).
+Por otra parte, en Linux debemos usar el administrador de paquetes que tengamos a mano. Por lo general se usa `apt` en distros como Ubuntu, Debian, etc. Sin embargo, en nuestro caso utilizamos `pacman`. 
+Para descargar e instalar un programa, a través de consola ingresamos `pacman -S nombreprograma`. Con ese simple comando ya estamos descargando e instalando el software, sin necesidad de perder mas tiempo (en algunas ocasiones debemos buscar el nombre del programa en internet, a pesar de esto, es un proceso mucho mas fácil que en Windows).
 
-### Aplicaciones basicas:
+### Aplicaciones básicas:
 
-- Primero y principal, los drivers de la placa grafica o graficos que tengamos en nuestra computadora.
+- Primero y principal, los drivers de la placa gráfica o gráficos que tengamos en nuestra computadora.
   - para AMD: xf86-video-amdgpu
   - para NVIDIA: xf86-video-nouveau
 
-- Tenemos que instalar un gestor de entorno grafico para poder tener escritorio y ventanas, yo voy a instalar xorg-server. Ademas, tambien vamos a instalar un gestor de sesiones, esto para iniciar sesion con ventana y no desde consola.
+- Tenemos que instalar un gestor de entorno gráfico para poder tener escritorio y ventanas, por mi parte, voy a instalar xorg-server. Además, también vamos a instalar un gestor de sesiones, esto para iniciar sesion con ventana y no desde consola.
   - `sudo pacman -S xorg-server lightdm lightdm-gtk-greeter`
-  - habilitamos lightdm con `systemctl enable lightdm.service`. Luego de la instalacion, reiniciamos el sistema con `sudo reboot now` y ya cuando inicie       tendremos disponible lightdm para iniciar sesion y qtile funcionando. 
+  - Habilitamos lightdm con `systemctl enable lightdm.service`. Luego de la instalación, reiniciamos el sistema con `sudo reboot now`. Una vez inicie,       tendremos disponible lightdm para iniciar sesion y qtile funcionando. 
